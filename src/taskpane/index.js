@@ -9,7 +9,7 @@ initializeIcons();
 
 let isOfficeInitialized = false;
 
-const title = "Contoso Task Pane Add-in";
+const title = "Eren Pane";
 
 const render = (Component) => {
   ReactDOM.render(

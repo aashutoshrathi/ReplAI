@@ -14,6 +14,8 @@ Office.onReady(() => {
  * @param event {Office.AddinCommands.Event}
  */
 function action(event) {
+  Office.context.mailbox.item.displayReplyForm("Kuch Kehna tha!");
+
   const message = {
     type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
     message: "Performed action.",
