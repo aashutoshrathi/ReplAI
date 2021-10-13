@@ -9,7 +9,7 @@ initializeIcons();
 
 let isOfficeInitialized = false;
 
-const title = "Eren Pane";
+const title = "ReplAi Pane";
 
 const render = (Component) => {
   ReactDOM.render(

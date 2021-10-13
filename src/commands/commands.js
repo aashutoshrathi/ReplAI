@@ -14,7 +14,13 @@ Office.onReady(() => {
  * @param event {Office.AddinCommands.Event}
  */
 function action(event) {
-  Office.context.mailbox.item.displayReplyForm("Kuch Kehna tha!");
+  Office.context.mailbox.item.body.getAsync(
+    "text",
+    { asyncContext: "This is passed to the callback" },
+    function callback(result) {
+      Office.context.mailbox.item.displayReplyForm(result.value.split(" ").join(";;"));
+    }
+  );
 
   const message = {
     type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,

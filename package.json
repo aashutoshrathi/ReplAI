@@ -1,9 +1,9 @@
 {
-  "name": "eren",
+  "name": "ReplAI",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aashutoshrathi/eren.git"
+    "url": "https://github.com/aashutoshrathi/ReplAI.git"
   },
   "author": "Aashutosh Rathi",
   "license": "MIT",
