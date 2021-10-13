@@ -24,7 +24,7 @@ function action(event) {
 
   const message = {
     type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
-    message: "Performed action.",
+    message: "Opened Reply window with suggestions ✔️",
     icon: "Icon.80x80",
     persistent: true,
   };
