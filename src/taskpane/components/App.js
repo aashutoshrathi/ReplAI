@@ -2,6 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { ChoiceGroup, DefaultButton, PrimaryButton, Stack } from "@fluentui/react";
 import Progress from "./Progress";
+import { networkCall } from "../helper";
 // images references in the manifest
 import "../../../assets/icon-16.png";
 import "../../../assets/icon-32.png";
@@ -15,6 +16,7 @@ const App = (props) => {
   const [content, setContent] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(true);
   const [options, setOptions] = React.useState([]);
+  const [apiData, setApiData] = React.useState("");
   const [selected, setSelected] = React.useState("0");
 
   React.useEffect(() => {
@@ -25,6 +27,10 @@ const App = (props) => {
         setContent(result.value);
       }
     );
+    networkCall("GET", "https://api.github.com/users/github", (d) => {
+      setApiData(JSON.parse(d).name);
+      setIsLoading(false);
+    });
   }, []);
 
   React.useEffect(() => {
@@ -36,7 +42,6 @@ const App = (props) => {
         { key: "2", text: content?.slice(0, 30) },
       ]);
     }
-    setIsLoading(false);
   }, [content]);
 
   const refreshReplies = async () => {};
@@ -46,7 +51,7 @@ const App = (props) => {
   };
 
   if (!isOfficeInitialized || isLoading) {
-    return <Progress title={title} logo={logo} message="Please sideload your addin to see app body." />;
+    return <Progress title={title} logo={logo} message={`ReplAI is thinking...${apiData}`} />;
   }
 
   return (
