@@ -12,7 +12,7 @@ const logo = require("./../../../assets/logo-filled.png");
 const App = (props) => {
   const { title, isOfficeInitialized } = props;
 
-  const [content, setContent] = React.useState();
+  const [content, setContent] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(true);
   const [options, setOptions] = React.useState([]);
   const [selected, setSelected] = React.useState("0");
