@@ -8,8 +8,10 @@ export default class Progress extends React.Component {
 
     return (
       <section>
-        <img width="90" height="90" src={logo} alt={title} title={title} />
-        <h1>{title}</h1>
+        <div className="center">
+          <img width="90" height="90" src={logo} alt={title} title={title} />
+        </div>
+        <br />
         <Spinner size={SpinnerSize.large} label={message} />
       </section>
     );

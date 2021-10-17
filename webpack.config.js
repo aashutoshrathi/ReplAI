@@ -4,6 +4,7 @@ const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
+require("dotenv").config({ path: "./.env" });
 
 const urlDev = "https://localhost:3000/";
 const urlProd = "https://replai.aashutosh.dev/";
@@ -88,6 +89,9 @@ module.exports = async (env, options) => {
       }),
       new webpack.ProvidePlugin({
         Promise: ["es6-promise", "Promise"],
+      }),
+      new webpack.DefinePlugin({
+        "process.env": JSON.stringify(process.env),
       }),
     ],
     devServer: {

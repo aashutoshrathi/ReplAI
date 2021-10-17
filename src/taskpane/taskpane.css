@@ -1,5 +1,10 @@
 html, body {
     width: 90%;
-    height: 80%;
-    padding: 1rem;
+    height: 90%;
+    padding: 0.7rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
 }

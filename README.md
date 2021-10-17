@@ -10,6 +10,8 @@
 
 ## Dev
 
+- Create `.env` file by copying `.env.sample`.
+
 - To Start Debugger use:
 
 ```bash
