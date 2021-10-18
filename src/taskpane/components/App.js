@@ -28,23 +28,28 @@ const App = (props) => {
   React.useEffect(() => {
     setRefreshing(true);
 
-    Office.context.mailbox.item.body.getAsync(
-      "text",
-      { asyncContext: "This is passed to the callback" },
-      function callback(result) {
-        setContent(result.value);
-      }
-    );
-    networkCall(
-      "POST",
-      `https://api.openai.com/v1/engines/${engine}/completions`,
-      JSON.stringify(getBody(content)),
-      (d) => {
-        setApiData(JSON.parse(d).choices);
-        setIsLoading(false);
-      }
-    );
-  }, [refreshCount]);
+    if (!content.length) {
+      Office.context.mailbox.item.body.getAsync(
+        "text",
+        { asyncContext: "This is passed to the callback" },
+        function callback(result) {
+          setContent(result.value);
+        }
+      );
+    }
+
+    if (content.length) {
+      networkCall(
+        "POST",
+        `https://api.openai.com/v1/engines/${engine}/completions`,
+        JSON.stringify(getBody(content)),
+        (d) => {
+          setApiData(JSON.parse(d).choices);
+          setIsLoading(false);
+        }
+      );
+    }
+  }, [refreshCount, content]);
 
   React.useEffect(() => {
     setOptions(apiData.map((c) => ({ key: c.index, text: c.text })));
