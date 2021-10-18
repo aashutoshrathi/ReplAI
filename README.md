@@ -23,3 +23,9 @@ npm start
 ```bash
 npm stop
 ```
+
+## Deploy
+
+- Do a `npm run build` & host the `dist` as file server.
+- Change `urlProd` in `webpack.config.js` to the path.
+- Import the `manifest.prod.xml` on Admin Page of MS Suite.

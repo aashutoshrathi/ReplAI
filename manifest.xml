@@ -11,7 +11,7 @@
   <SupportUrl DefaultValue="https://aashutosh.dev"/>
   <AppDomains>
     <AppDomain>https://aashutosh.dev</AppDomain>
-    <AppDomain>https://api.github.com</AppDomain>
+    <AppDomain>https://api.openai.com</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
