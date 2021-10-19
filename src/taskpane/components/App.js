@@ -25,30 +25,26 @@ const App = (props) => {
   const [refreshing, setRefreshing] = React.useState(true);
   const [selected, setSelected] = React.useState(0);
 
+  const readUpdateContent = React.useCallback(() => {
+    Office.context.mailbox.item.body.getAsync(
+      "text",
+      { asyncContext: "This is passed to the callback" },
+      function callback(result) {
+        setContent(result.value);
+      }
+    );
+  }, []);
+
   // handle item change
   React.useEffect(() => {
-    Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, () => {
-      Office.context.mailbox.item.body.getAsync(
-        "text",
-        { asyncContext: "This is passed to the callback" },
-        function callback(result) {
-          setContent(result.value);
-        }
-      );
-    });
+    Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, readUpdateContent);
   }, []);
 
   React.useEffect(() => {
     setRefreshing(true);
 
     if (!content.length) {
-      Office.context.mailbox.item.body.getAsync(
-        "text",
-        { asyncContext: "This is passed to the callback" },
-        function callback(result) {
-          setContent(result.value);
-        }
-      );
+      readUpdateContent();
     }
 
     if (content.length) {
