@@ -25,6 +25,19 @@ const App = (props) => {
   const [refreshing, setRefreshing] = React.useState(true);
   const [selected, setSelected] = React.useState(0);
 
+  // handle item change
+  React.useEffect(() => {
+    Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, () => {
+      Office.context.mailbox.item.body.getAsync(
+        "text",
+        { asyncContext: "This is passed to the callback" },
+        function callback(result) {
+          setContent(result.value);
+        }
+      );
+    });
+  }, []);
+
   React.useEffect(() => {
     setRefreshing(true);
 
@@ -63,7 +76,7 @@ const App = (props) => {
   };
 
   if (!isOfficeInitialized || isLoading) {
-    return <Progress title={title} logo={logo} message={`ReplAI is thinking...`} />;
+    return <Progress title={title} logo={logo} message={`RegieAI is thinking...`} />;
   }
 
   return (
@@ -77,7 +90,7 @@ const App = (props) => {
         }}
       >
         <img width={size} height={size} src={logo} alt={title} title={title} />
-        <h3>ReplAI</h3>
+        <h3>RegieAI</h3>
       </Stack>
       {refreshing && (
         <>

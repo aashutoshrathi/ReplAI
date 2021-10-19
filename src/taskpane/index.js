@@ -9,7 +9,7 @@ initializeIcons();
 
 let isOfficeInitialized = false;
 
-const title = "ReplAI";
+const title = "RegieAI";
 
 const render = (Component) => {
   ReactDOM.render(
