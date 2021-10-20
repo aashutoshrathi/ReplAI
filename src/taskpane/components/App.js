@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ChoiceGroup, DefaultButton, PrimaryButton, Stack } from "@fluentui/react";
 import Progress from "./Progress";
 import ShimmerOption from "./ShimmerOption";
-import { networkCall, getBody } from "../helper";
+import { networkCall, getBody, processBody } from "../helper";
 // images references in the manifest
 import "../../../assets/icon-16.png";
 import "../../../assets/icon-32.png";
@@ -27,10 +27,10 @@ const App = (props) => {
 
   const readUpdateContent = React.useCallback(() => {
     Office.context.mailbox.item.body.getAsync(
-      "text",
+      Office.CoercionType.Text,
       { asyncContext: "This is passed to the callback" },
       function callback(result) {
-        setContent(result.value);
+        setContent(processBody(result.value));
       }
     );
   }, []);
