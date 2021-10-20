@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="100" src="https://raw.githubusercontent.com/aashutoshrathi/ReplAI/main/assets/icon-128.png?token=AFBXTASWGQMOH7DPQCFUZA3BN7RX4">
+    <img width="100" src="https://replai.aashutosh.dev/assets/logo-filled.png">
 </p>
 
 <h1 align="center">ReplAI</h1>
