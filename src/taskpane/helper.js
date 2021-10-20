@@ -31,4 +31,12 @@ const getBody = (content) => ({
       """`,
 });
 
-export { networkCall, getBody };
+const removeJunk = (str) => str.replace(/(\r\n|\n|\r)/gm, "");
+
+const processBody = (body) => {
+  // for now take latest msg, later one can take other msgs for context
+  const [latestMsg] = body.split(/On .* at [0-9]{1,2}:[0-9]{2} [A|P]M .* <.*> wrote:/gi);
+  return removeJunk(latestMsg);
+};
+
+export { networkCall, getBody, processBody };
